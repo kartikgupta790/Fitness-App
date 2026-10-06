@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pulse - Fitness Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#2B2BFF" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Pulse" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=DM+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- TOP NAVIGATION BAR -->
+    <nav>
+      <div class="wrap">
+        <a
+          class="logo"
+          href="#"
+          onclick="
+            site();
+            scrollTo(0, 0);
+            return false;
+          "
+          >PULSE<svg width="34" height="22" viewBox="0 0 34 22">
+            <path
+              d="M1 12h8l4-9 6 17 4-8h10"
+              fill="none"
+              stroke="#FFE14D"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+        ></a>
+        <div class="nl" id="nl">
+          <a href="#features" onclick="return jump('features');">Features</a
+          ><a href="#plans" onclick="return jump('plans');">Plans</a
+          ><a onclick="launch('lib')">Exercises</a><a onclick="launch('prog')">Progress</a>
+        </div>
+        <button class="th" onclick="theme()" aria-label="Toggle dark mode" title="Dark / light">
+          ◐</button
+        ><button class="b nb" onclick="launch('home')">Open app</button
+        ><button class="mb" onclick="$('#nl').classList.toggle('on')" aria-label="Menu">☰</button>
+      </div>
+    </nav>
+    <!-- LANDING PAGE (shown first) -->
+    <main id="site">
+      <header class="hero">
+        <div class="wrap">
+          <div>
+            <h1><span>Lift.</span><span>Log.</span><span>Level up.</span></h1>
+            <p>
+              Track every set, beat your last numbers and keep your weekly streak alive. Free, for
+              the gym or your living room.
+            </p>
+            <button class="b" onclick="launch('log')">Start your first workout</button>
+          </div>
+          <div class="rw">
+            <i class="stk s1">New PR!</i><i class="stk s2">🔥 4 week streak</i>
+            <div class="rep">
+              <div class="ring">
+                <svg width="220" height="220">
+                  <circle class="bg" cx="110" cy="110" r="90" />
+                  <circle class="fg" id="fg" cx="110" cy="110" r="90" /></svg
+                ><b><span id="rc">0</span><small>of 12 reps</small></b>
+              </div>
+              <button class="b" onclick="rep()" id="rb">Tap to count a rep</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="tick"><div id="tk"></div></div>
+      <section class="s" id="features">
+        <div class="wrap">
+          <h2 class="rv">Everything you need to keep showing up</h2>
+          <div class="grid" id="feat"></div>
+        </div>
+      </section>
+      <section class="s dk" id="plans">
+        <div class="wrap">
+          <h2 class="rv">Ready-made plans</h2>
+          <div class="grid" id="lp"></div>
+        </div>
+      </section>
+      <section class="cta">
+        <div class="wrap">
+          <h2 class="rv">Your next set starts now</h2>
+          <p>No account needed. Your data stays on your device.</p>
+          <button class="b" onclick="launch('home')">Open Pulse</button>
+        </div>
+      </section>
+      <footer>
+        Pulse is for general fitness and is not medical advice. Talk to a doctor before starting a
+        new program.
+      </footer>
+    </main>
+
+    <!-- APP (opens with 'Open app'; screens are drawn by app.js) -->
+    <div id="app">
+      <div class="wrap">
+        <div class="top" id="tabs"></div>
+        <div id="view"></div>
+      </div>
+    </div>
+    <!-- REST TIMER, TOAST MESSAGE AND POP-UP BOX -->
+    <div id="rest">
+      <span id="rt">90</span>s rest<button onclick="rest(15)">+15s</button
+      ><button onclick="rest(0)">Skip</button>
+    </div>
+    <div id="toast"></div>
+    <div id="modal" onclick="if (event.target == this) this.classList.remove('on');">
+      <div id="mc"></div>
+    </div>
+
+    <!-- All logic is in app.js, all styling is in style.css -->
+    <script src="app.js"></script>
+  </body>
+</html>
